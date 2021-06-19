@@ -12,4 +12,6 @@ const sequelize = new Sequelize(db, username, password, {
   port,
 });
 
+export * from 'sequelize';
+
 export default sequelize;

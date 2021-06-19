@@ -67,6 +67,15 @@
     /* Advanced Options */
     "skipLibCheck": true,                           /* Skip type checking of declaration files. */
     "forceConsistentCasingInFileNames": true,        /* Disallow inconsistently-cased references to the same file. */
+  
+    "baseUrl": ".",
+    "paths": {
+        "@services/*": ["./src/services/*"],
+        "@shared/*": ["./src/shared/*"],
+        "@routes/*": ["./src/routes/*"],
+        "@models/*": ["./src/db/models/*"],
+        "@/*": ["./src/*"],
+    }
   },
   "include": ["./environment.d.ts", "src/**/*.ts", "src/**/*.json"],
 }
