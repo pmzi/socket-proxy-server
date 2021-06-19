@@ -2,8 +2,15 @@
  * Module dependencies.
  */
 
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+// eslint-disable-next-line import/first
 import createDebug from 'debug';
+// eslint-disable-next-line import/first
 import http from 'http';
+// eslint-disable-next-line import/first
 import app from './app';
 
 const debug = createDebug('server:server');
