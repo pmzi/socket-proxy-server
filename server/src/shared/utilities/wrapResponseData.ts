@@ -1,11 +1,13 @@
 interface IResponseData<T> {
-  status: 'ok';
+  status: 'ok' | 'error';
   data: T;
 }
 
-export default function wrapResponseData(data: unknown): IResponseData<typeof data> {
+export default function wrapResponseData(
+  data: unknown, isError = false,
+): IResponseData<typeof data> {
   return {
-    status: 'ok',
+    status: isError ? 'error' : 'ok',
     data,
   };
 }

@@ -8,6 +8,7 @@ import logger from 'morgan';
 import { HttpError } from 'http-errors';
 import registerRoutes from './routes';
 import APIError from './shared/utilities/APIError';
+import errorHandler from './errorHandler';
 
 const app = express();
 
@@ -24,14 +25,6 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 // error handler
-app.use((err: HttpError, req: Request, res: Response) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+app.use(errorHandler);
 
 export default app;
