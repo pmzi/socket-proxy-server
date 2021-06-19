@@ -71,6 +71,7 @@
     "baseUrl": ".",
     "paths": {
         "@services/*": ["./src/services/*"],
+        "@controllers/*": ["./src/controllers/*"],
         "@shared/*": ["./src/shared/*"],
         "@routes/*": ["./src/routes/*"],
         "@models/*": ["./src/db/models/*"],

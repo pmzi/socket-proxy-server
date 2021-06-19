@@ -1,10 +1,10 @@
 import express from 'express';
 
+import homeController from '@controllers/homeController';
+
 const homeRouter = express.Router();
 
 /* GET users listing. */
-homeRouter.get('/', (req, res, next) => {
-  res.send('respond with a resource');
-});
+homeRouter.get('/', homeController.home);
 
 export default homeRouter;

@@ -3,7 +3,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  ignorePatterns: ['.eslintrc.js'],
+  ignorePatterns: ['.eslintrc.js', 'ecosystem.config.js'],
   extends: [
     'airbnb-typescript/base',
     'plugin:@typescript-eslint/eslint-recommended',

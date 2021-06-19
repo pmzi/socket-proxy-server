@@ -3,7 +3,7 @@ interface IResponseData<T> {
   data: T;
 }
 
-export default function wrapResponseData<T>(data: T): IResponseData<T> {
+export default function wrapResponseData(data: unknown): IResponseData<typeof data> {
   return {
     status: 'ok',
     data,
