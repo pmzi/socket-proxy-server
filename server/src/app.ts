@@ -1,13 +1,13 @@
-import express, { NextFunction, Request, Response } from 'express';
+import express, {
+  NextFunction, Request, Response,
+} from 'express';
 
-import createError from 'http-errors';
-
-import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import indexRouter from '../../routes/index';
-import usersRouter from '../../routes/users';
+import { HttpError } from 'http-errors';
+import registerRoutes from './routes';
+import APIError from './shared/utilities/APIError';
 
 const app = express();
 
@@ -15,18 +15,16 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+registerRoutes(app);
 
 // catch 404 and forward to error handler
 app.use((req: Request, res: Response, next: NextFunction) => {
-  next(createError(404));
+  next(new APIError.NotFound());
 });
 
 // error handler
-app.use((err: any, req: Request, res: Response) => {
+app.use((err: HttpError, req: Request, res: Response) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
