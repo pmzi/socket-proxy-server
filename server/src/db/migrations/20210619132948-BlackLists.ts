@@ -13,6 +13,14 @@ export default {
         type: sq.DataTypes.STRING,
         allowNull: false,
       },
+      createdAt: {
+        type: sq.DataTypes.DATE,
+        defaultValue: sq.fn('NOW'),
+      },
+      updatedAt: {
+        type: sq.DataTypes.DATE,
+        defaultValue: sq.fn('NOW'),
+      },
     });
   },
 

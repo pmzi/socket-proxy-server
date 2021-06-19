@@ -5,7 +5,6 @@ import express, {
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import { HttpError } from 'http-errors';
 import registerRoutes from './routes';
 import APIError from './shared/utilities/APIError';
 import errorHandler from './errorHandler';

@@ -11,7 +11,7 @@ interface ReportAttributes {
   isBlocked: boolean;
 }
 
-type ReportCreationAttributes = ReportAttributes & Optional<ReportAttributes, 'id'>;
+type ReportCreationAttributes = Optional<ReportAttributes, 'id'>;
 
 interface ReportInstance
   extends Model<ReportAttributes, ReportCreationAttributes>,
@@ -26,6 +26,7 @@ const Report = db.define<ReportInstance>(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
+      primaryKey: true,
     },
     target: {
       type: DataTypes.STRING,

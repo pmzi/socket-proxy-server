@@ -8,7 +8,7 @@ interface AdminAttributes {
   password: string;
 }
 
-type AdminCreationAttributes = AdminAttributes & Optional<AdminAttributes, 'id'>;
+type AdminCreationAttributes = Optional<AdminAttributes, 'id'>;
 
 interface AdminInstance
   extends Model<AdminAttributes, AdminCreationAttributes>,
@@ -20,6 +20,7 @@ const Admin = db.define<AdminInstance>(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
+      primaryKey: true,
     },
     username: {
       type: DataTypes.STRING,

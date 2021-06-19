@@ -5,14 +5,15 @@
 import dotenv from 'dotenv';
 import 'module-alias/register';
 
+import createDebug from 'debug';
+import http from 'http';
+
 dotenv.config();
 
 // eslint-disable-next-line import/first
-import createDebug from 'debug';
-// eslint-disable-next-line import/first
-import http from 'http';
-// eslint-disable-next-line import/first
 import app from './app';
+// eslint-disable-next-line import/order,import/first
+import initDB from '@models/index';
 
 const debug = createDebug('server:server');
 
@@ -82,16 +83,27 @@ function onListening() {
   debug(`Listening on ${bind}`);
 }
 
-/**
+async function init() {
+  try {
+    await initDB();
+    console.info('DB Initialized!');
+  } catch (e) {
+    console.error(e.message);
+    process.exit(-1);
+  }
+  /**
    * Get port from environment and store in Express.
  */
 
-const normalizedPort = normalizePort(process.env.PORT || '3000');
-app.set('port', normalizedPort);
-/**
+  const normalizedPort = normalizePort(process.env.PORT || '3000');
+  app.set('port', normalizedPort);
+  /**
    * Listen on provided port, on all network interfaces.
  */
 
-server.listen(normalizedPort);
-server.on('error', (error) => onError(error, normalizedPort));
-server.on('listening', onListening);
+  server.listen(normalizedPort);
+  server.on('error', (error) => onError(error, normalizedPort));
+  server.on('listening', onListening);
+}
+
+init();

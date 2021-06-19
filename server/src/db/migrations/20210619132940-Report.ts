@@ -21,6 +21,14 @@ export default {
         type: sq.DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      createdAt: {
+        type: sq.DataTypes.DATE,
+        defaultValue: sq.fn('NOW'),
+      },
+      updatedAt: {
+        type: sq.DataTypes.DATE,
+        defaultValue: sq.fn('NOW'),
+      },
     });
   },
 

@@ -7,7 +7,7 @@ interface BlackListAttributes {
   target: string;
 }
 
-type BlackListCreationAttributes = BlackListAttributes & Optional<BlackListAttributes, 'id'>;
+type BlackListCreationAttributes = Optional<BlackListAttributes, 'id'>;
 
 interface BlackListInstance
   extends Model<BlackListAttributes, BlackListCreationAttributes>,
@@ -22,6 +22,7 @@ const BlackList = db.define<BlackListInstance>(
       type: DataTypes.INTEGER,
       autoIncrement: true,
       allowNull: false,
+      primaryKey: true,
     },
     target: {
       type: DataTypes.STRING,
