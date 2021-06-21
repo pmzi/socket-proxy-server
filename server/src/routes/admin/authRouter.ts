@@ -1,10 +1,13 @@
 import express from 'express';
 
-import homeController from '@controllers/homeController';
 import wrapError from '@shared/utilities/wrapError';
+import authController from '@controllers/authController';
+import jwtGuard from '@shared/middlewares/jwtGuard';
 
 const authRouter = express.Router();
 
-authRouter.get('/', wrapError(homeController.home));
+authRouter.post('/login', wrapError(authController.login));
+authRouter.post('/', jwtGuard, wrapError(authController.createAdmin));
+authRouter.delete('/', jwtGuard, wrapError(authController.removeAdmin));
 
 export default authRouter;
