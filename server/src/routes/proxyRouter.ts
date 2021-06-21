@@ -11,7 +11,7 @@ const proxyRouter = express.Router();
 proxyRouter.post('/addRequest',
   [
     body('target').isString(),
-    body('length').isNumeric(),
+    body('length').optional().isNumeric(),
     body('isBlocked').isAlpha(),
   ],
   handleValidationError,
