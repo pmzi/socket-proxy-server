@@ -7,6 +7,7 @@ declare global {
       DB_PASSWORD: string;
       DB_PORT: string;
       ENCRYPTION_SALT: string;
+      JWT_SECRET: string;
       NODE_ENV: 'development' | 'production';
       PORT?: string;
       PWD: string;

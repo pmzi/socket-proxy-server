@@ -8,4 +8,9 @@ export default {
   blackList: {
     REMOVE: 'Target removed successfully!',
   },
+  admin: {
+    REMOVE: 'Admin removed successfully!',
+    SELF_DELETE: 'You can not delete yourself!',
+    LOGIN_ERROR: 'Username or password is incorrect!',
+  },
 };
