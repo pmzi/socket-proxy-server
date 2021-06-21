@@ -21,5 +21,10 @@ module.exports = {
         require('autoprefixer'),
       ],
     },
+    sass: {
+      loaderOptions: {
+        additionalData: `@import '~@/stylesheets/_imports.scss';`
+      }
+    }
   },
 };

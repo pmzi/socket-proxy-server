@@ -15,6 +15,8 @@ module.exports = {
   },
   rules: {
     "react/react-in-jsx-scope": "off",
+    "indent": ["error", 2, {"ignoredNodes": ["JSXElement"]}],
+    "react/jsx-indent": ["error", 2]
   },
   settings: {
     'import/resolver': {

@@ -8,5 +8,5 @@ export default function registerRoutes(app: e.Express): void {
   app.use('/', homeRouter);
   app.use('/proxy', proxyRouter);
 
-  registerAdminRoutes(app, 'admin');
+  registerAdminRoutes(app, '/admin');
 }

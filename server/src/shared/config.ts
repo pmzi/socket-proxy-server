@@ -1,3 +1,3 @@
 // One hour
-// eslint-disable-next-line import/prefer-default-export
 export const JWT_EXPIRE = 3600;
+export const IS_PRODUCTION = process.env.NODE_ENV === 'production';

@@ -5,21 +5,29 @@ import auth from './auth';
 
 const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
-function addCredentialsIfLoggedIn(options: Request): void {
+interface IUnifiedRequestInit extends RequestInit {
+  headers: Headers;
+}
+
+function addCredentialsIfLoggedIn(options: IUnifiedRequestInit): void {
   const token = auth.getToken();
   if (token) options.headers.set('Authorization', `Bearer ${token}`);
 }
 
 export default {
   async request<HTTPResponse>(
-    url: string, options: Request,
+    url: string, options: RequestInit,
   ): IRequestReturnValue<HTTPResponse> {
-    addCredentialsIfLoggedIn(options);
-
-    const res = await fetch({
+    const unifiedOptions: IUnifiedRequestInit = {
       ...options,
-      url: `${BASE_URL}${url}`,
-    });
+      headers: options.headers ? new Headers(options.headers) : new Headers(),
+    };
+
+    addCredentialsIfLoggedIn(unifiedOptions);
+
+    unifiedOptions.headers.set('Content-Type', 'application/json');
+
+    const res = await fetch(`${BASE_URL}${url}`, unifiedOptions);
 
     const result: GenericHTTPResponseType<HTTPResponse> = await res.json();
 
@@ -27,7 +35,7 @@ export default {
     throw new Error(result.data);
   },
   get<HTTPResponse>(
-    url: string, options: Request = new Request(url),
+    url: string, options: RequestInit = {},
   ): IRequestReturnValue<HTTPResponse> {
     return this.request(url, {
       ...options,
@@ -35,7 +43,7 @@ export default {
     });
   },
   post<HTTPResponse>(
-    url: string, data: any, options: Request = new Request(url),
+    url: string, data: any, options: RequestInit = {},
   ): IRequestReturnValue<HTTPResponse> {
     return this.request(url, {
       ...options,
@@ -44,7 +52,7 @@ export default {
     });
   },
   put<HTTPResponse>(
-    url: string, data: any, options: Request = new Request(url),
+    url: string, data: any, options: RequestInit = {},
   ): IRequestReturnValue<HTTPResponse> {
     return this.request(url, {
       ...options,
@@ -53,7 +61,7 @@ export default {
     });
   },
   patch<HTTPResponse>(
-    url: string, data: any, options: Request = new Request(url),
+    url: string, data: any, options: RequestInit = {},
   ): IRequestReturnValue<HTTPResponse> {
     return this.request(url, {
       ...options,
@@ -62,7 +70,7 @@ export default {
     });
   },
   delete<HTTPResponse>(
-    url: string, options: Request = new Request(url),
+    url: string, options: RequestInit = {},
   ): IRequestReturnValue<HTTPResponse> {
     return this.request(url, {
       ...options,

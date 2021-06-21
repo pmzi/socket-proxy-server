@@ -1,10 +1,12 @@
 import express, {
   NextFunction, Request, Response,
 } from 'express';
+import cors from 'cors';
 
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
+import { IS_PRODUCTION } from '@shared/config';
 import registerRoutes from './routes';
 import APIError from './shared/utilities/APIError';
 import errorHandler from './errorHandler';
@@ -15,6 +17,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+if (!IS_PRODUCTION) {
+  app.use(cors());
+}
 
 registerRoutes(app);
 

@@ -27,19 +27,19 @@ const notify: INotify = {
     });
   },
   error({ message, description }) {
-    notification.success({
+    notification.error({
       message,
       description,
     });
   },
   warning({ message, description }) {
-    notification.success({
+    notification.warning({
       message,
       description,
     });
   },
   info({ message, description }) {
-    notification.success({
+    notification.info({
       message,
       description,
     });
