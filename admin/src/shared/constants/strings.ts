@@ -16,4 +16,16 @@ export default {
       SUCCESS: 'با موفقیت وارد شدید!',
     },
   },
+  panel: {
+    menu: {
+      ADMIN: 'ادمین',
+      ADD_ADMIN: 'افزودن ادمین',
+      MANAGE_ADMINS: 'مدیریت ادمین‌ها',
+
+      REPORT: 'گزارش',
+    },
+    report: {
+      TITLE: 'گزارش',
+    },
+  },
 };
