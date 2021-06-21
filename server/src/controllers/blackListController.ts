@@ -1,4 +1,5 @@
 import BlackList from '@models/BlackList';
+import strings from '@shared/constants/strings';
 import APIError from '@shared/utilities/APIError';
 import wrapResponseData from '@shared/utilities/wrapResponseData';
 import { ControllerMethodType, ControllerType } from './shared/types';
@@ -26,10 +27,28 @@ const blackListController: ControllerType<BlackListController> = {
     }
   },
   async addTarget(req, res) {
+    const { target } = req.body;
 
+    try {
+      const newTarget = await BlackList.create({
+        target,
+      });
+
+      res.send(wrapResponseData(newTarget));
+    } catch (e) {
+      throw new APIError.InternalServerError(e.message);
+    }
   },
   async removeTarget(req, res) {
+    const { target } = req.query;
 
+    try {
+      await BlackList.destroy({ where: { target } });
+
+      res.send(wrapResponseData(strings.blackList.REMOVE));
+    } catch (e) {
+      throw new APIError.InternalServerError(e.message);
+    }
   },
 };
 

@@ -5,4 +5,7 @@ export default {
   reports: {
     ADD_REPORT: 'Report added successfully!',
   },
+  blackList: {
+    REMOVE: 'Target removed successfully!',
+  },
 };

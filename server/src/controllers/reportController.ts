@@ -26,7 +26,25 @@ const reportController: ControllerType<ReportController> = {
     }
   },
   async getRequests(req, res) {
-    
+    const { target } = req.query;
+
+    try {
+      let result;
+
+      if (target) {
+        result = await Report.findAndCountAll({
+          where: {
+            target,
+          },
+        });
+      } else {
+        result = await Report.findAndCountAll();
+      }
+
+      res.send(wrapResponseData(result));
+    } catch (e) {
+      throw new APIError.InternalServerError(e.message);
+    }
   },
 };
 
