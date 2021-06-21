@@ -6,7 +6,7 @@ export default function PrivateRoute(props: RouteProps): JSX.Element {
   const { isLoggedIn, redirectToPublic } = useAuth();
 
   useEffect(() => {
-    redirectToPublic();
+    if (!isLoggedIn) redirectToPublic();
   }, [isLoggedIn]);
 
   return (

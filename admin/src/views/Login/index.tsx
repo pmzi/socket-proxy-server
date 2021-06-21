@@ -8,9 +8,13 @@ import './style.scss';
 export default function Login(): JSX.Element {
   const auth = useAuth();
   const doLogin: OnSubmitType = ({ username, password }) => {
-    auth.login({ username, password }).catch((e) => {
+    auth.login({ username, password }).then(() => {
+      notify.success({
+        description: strings.auth.login.SUCCESS,
+      });
+      auth.redirectToPrivate();
+    }).catch((e) => {
       notify.error({
-        message: strings.auth.AUTH_ERROR_TITLE,
         description: e.message,
       });
     });

@@ -1,16 +1,16 @@
 export default {
   FINE: 'EveryThing is Fine!',
-  ERROR: 'Error Occurred!',
-  VALIDATION_ERROR: 'Validation Error!',
+  ERROR: 'مشکلی رخ داد!',
+  VALIDATION_ERROR: 'ورودی‌ها در فرمت صحیح نمی‌باشند!',
   reports: {
-    ADD_REPORT: 'Report added successfully!',
+    ADD_REPORT: 'گزارش با موفقیت اضافه شد!',
   },
   blackList: {
-    REMOVE: 'Target removed successfully!',
+    REMOVE: 'هدف با موفقیت حذف شد!',
   },
   admin: {
-    REMOVE: 'Admin removed successfully!',
-    SELF_DELETE: 'You can not delete yourself!',
-    LOGIN_ERROR: 'Username or password is incorrect!',
+    REMOVE: 'ادمین با موفقیت حذف شد!',
+    SELF_DELETE: 'شما نمی‌توانید خودتان را حذف کنید!',
+    LOGIN_ERROR: 'نام‌کاربری یا رمزعبور اشتباه می‌باشد!',
   },
 };
