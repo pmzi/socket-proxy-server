@@ -11,6 +11,7 @@ interface AuthController {
   login: ControllerMethodType;
   createAdmin: ControllerMethodType;
   removeAdmin: ControllerMethodType;
+  getInfo: ControllerMethodType;
 }
 
 const authController: ControllerType<AuthController> = {
@@ -27,10 +28,7 @@ const authController: ControllerType<AuthController> = {
 
       if (!foundUser) throw new APIError.NotFound(strings.admin.LOGIN_ERROR);
 
-      res.json(wrapResponseData({
-        username: foundUser.username,
-        jwt: jwt.sign({ username }),
-      }));
+      res.json(wrapResponseData(jwt.sign({ username })));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }
@@ -61,6 +59,20 @@ const authController: ControllerType<AuthController> = {
       });
 
       res.send(wrapResponseData(strings.admin.REMOVE));
+    } catch (e) {
+      throw new APIError.InternalServerError(e.message);
+    }
+  },
+  async getInfo(req, res) {
+    const { username } = req.user as RequestUser;
+
+    try {
+      const adminInfo = await Admin.findOne({
+        where: { username },
+        include: ['username'],
+      });
+
+      res.send(wrapResponseData(adminInfo));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }

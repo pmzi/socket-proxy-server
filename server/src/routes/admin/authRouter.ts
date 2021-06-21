@@ -9,5 +9,6 @@ const authRouter = express.Router();
 authRouter.post('/login', wrapError(authController.login));
 authRouter.post('/', jwtGuard, wrapError(authController.createAdmin));
 authRouter.delete('/', jwtGuard, wrapError(authController.removeAdmin));
+authRouter.get('/userData', jwtGuard, wrapError(authController.getInfo));
 
 export default authRouter;
