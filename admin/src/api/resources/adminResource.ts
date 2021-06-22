@@ -1,6 +1,6 @@
 import http from '@shared/services/http';
 import { IRequestReturnValue } from '@shared/types';
-import { ADD_ADMIN, DELETE_ADMIN, GET_ADMINS } from './shared/endpoints';
+import { ADD_ADMIN, GET_ADMINS } from './shared/endpoints';
 
 interface ISingleAdmin {
   id: number;
@@ -19,8 +19,5 @@ export default {
   },
   getAdmins(): IRequestReturnValue<GetAdminsReturnType> {
     return http.get<GetAdminsReturnType>(GET_ADMINS);
-  },
-  deleteAdmin({ username }: { username: string }): IRequestReturnValue<string> {
-    return http.delete<string>(DELETE_ADMIN(username));
   },
 };
