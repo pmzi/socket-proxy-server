@@ -1,20 +1,22 @@
 import { useCallback, useState } from 'react';
 
+type CBFnType<T, P> = (()=>Promise<T>) | ((arg: P)=>Promise<T>);
+
 interface IUseAsync<T, P, E> {
-  execute: (arg?: P)=>Promise<T>;
+  execute: CBFnType<T, P>;
   data: T | null;
   error: E | null;
   isLoading: boolean;
 }
 
-export default function useAsync<T, P = unknown, E = string>(
-  fn: (arg?: P) => Promise<T>,
+export default function useAsync<T, P = void, E = string>(
+  fn: CBFnType<T, P>,
 ): IUseAsync<T, P, E> {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<E | null>(null);
 
-  const execute = useCallback((arg?: P) => {
+  const execute = useCallback((arg: P) => {
     setIsLoading(true);
 
     return fn(arg).then((res) => {

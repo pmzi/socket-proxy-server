@@ -23,7 +23,7 @@ export default function Login(): JSX.Element {
   return (
     <div className="Login w-screen h-screen flex items-center justify-center bg-smoke">
       <div className="Login__Container bg-white shadow-md p-8">
-        <h1 className="text-4xl font-bold text-center mb-8">
+        <h1 className="text-center">
           {strings.auth.login.TITLE}
         </h1>
         <LoginForm

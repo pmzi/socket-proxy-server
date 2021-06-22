@@ -32,10 +32,26 @@ export default {
       TITLE: 'گزارش',
     },
   },
+  blackList: {
+    add: {
+      TITLE: 'افزودن هدف',
+
+      TARGET_FIELD: 'آدرس هدف',
+      TARGET_FIELD_PLACEHOLDER: 'مثال: localhost:5000',
+      SUBMIT: 'افزودن',
+      SUCCESS: 'با موفقیت اضافه شد.',
+    },
+    list: {
+      TITLE: 'اهداف مسدود شده',
+    },
+  },
   TARGET: 'هدف',
   LENGTH: 'حجم (بایت)',
   IS_BLOCKED: 'بلاک شده',
   CREATED_AT: 'زمان',
   BLOCKED: 'بلاک شده',
   NOT_BLOCKED: 'بلاک نشده',
+
+  REQUIRED_ERROR: 'این فیلد الزامی می‌باشد.',
+  PATTERN_ERROR: 'مقدار وارد شده به فرمت صحیح نمی‌باشد.',
 };

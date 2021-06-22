@@ -1,24 +1,23 @@
 import { useEffect, useMemo } from 'react';
 import { Skeleton } from 'antd';
 
-import { IGetReportsReturn } from '@/api/resources/reportResource';
-import { reportAPI } from '@api';
+import { blackListAPI } from '@api';
 import strings from '@shared/constants/strings';
 import useAsync from '@shared/hooks/useAsync';
 import notify from '@shared/services/notify';
-import PanelReportTable from './PanelReportTable';
+import ShowBlackListTable from './ShowBlackListTable';
 
-export default function PanelReport(): JSX.Element {
+export default function ShowBlackList(): JSX.Element {
   const {
     isLoading, data, execute,
-  } = useAsync<IGetReportsReturn>(reportAPI.getReports);
+  } = useAsync(blackListAPI.getBlackList);
 
   const normalizedData = useMemo(() => {
     if (!data) return null;
-    return data.rows.map(({
-      id, target, length, isBlocked, createdAt,
+    return data.map(({
+      id, target, createdAt,
     }) => ({
-      id, target, length, isBlocked, createdAt,
+      id, target, createdAt,
     }));
   }, [data]);
 
@@ -30,7 +29,7 @@ export default function PanelReport(): JSX.Element {
 
   let content = <Skeleton active={true} loading={true} />;
   if (normalizedData && !isLoading) {
-    content = <PanelReportTable
+    content = <ShowBlackListTable
       data={normalizedData}
     />;
   }
@@ -38,7 +37,7 @@ export default function PanelReport(): JSX.Element {
   return (
     <div>
       <h1>
-        {strings.panel.report.TITLE}
+        {strings.blackList.list.TITLE}
       </h1>
 
       {content}

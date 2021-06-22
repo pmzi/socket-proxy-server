@@ -2,4 +2,12 @@
   html, body {
     font-family: $font-family;
   }
+
+  h1 {
+    @apply font-bold text-4xl mb-10;
+  }
+
+  h2 {
+    @apply font-bold text-3xl mb-8;
+  }
 }
