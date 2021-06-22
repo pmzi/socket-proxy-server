@@ -19,7 +19,7 @@ export default function AddAdminForm({ onSubmit, isLoading = false }: IProps): J
       onFinish={onSubmit}
     >
       <Form.Item
-        label={strings.auth.login.USERNAME}
+        label={strings.USERNAME}
         name="username"
         rules={[required()]}
       >
@@ -27,7 +27,7 @@ export default function AddAdminForm({ onSubmit, isLoading = false }: IProps): J
       </Form.Item>
 
       <Form.Item
-        label={strings.auth.login.PASSWORD}
+        label={strings.PASSWORD}
         name="password"
         rules={[required()]}
       >

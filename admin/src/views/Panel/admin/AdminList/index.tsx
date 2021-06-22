@@ -3,14 +3,14 @@ import { Skeleton } from 'antd';
 
 import { adminAPI } from '@api';
 import strings from '@shared/constants/strings';
-import useAsync from '@shared/hooks/useAsync';
+import useApi from '@shared/hooks/useApi';
 import notify from '@shared/services/notify';
 import AdminListTable from './AdminListTable';
 
 export default function AdminList(): JSX.Element {
   const {
     isLoading, data, execute,
-  } = useAsync(adminAPI.getAdmins);
+  } = useApi(adminAPI.getAdmins);
 
   const normalizedData = useMemo(() => {
     if (!data) return null;
@@ -37,7 +37,7 @@ export default function AdminList(): JSX.Element {
   return (
     <div>
       <h1>
-        {strings.blackList.list.TITLE}
+        {strings.admin.list.TITLE}
       </h1>
 
       {content}

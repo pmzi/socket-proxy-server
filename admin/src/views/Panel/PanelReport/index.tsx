@@ -4,14 +4,14 @@ import { Skeleton } from 'antd';
 import { IGetReportsReturn } from '@/api/resources/reportResource';
 import { reportAPI } from '@api';
 import strings from '@shared/constants/strings';
-import useAsync from '@shared/hooks/useAsync';
+import useApi from '@shared/hooks/useApi';
 import notify from '@shared/services/notify';
 import PanelReportTable from './PanelReportTable';
 
 export default function PanelReport(): JSX.Element {
   const {
     isLoading, data, execute,
-  } = useAsync<IGetReportsReturn>(reportAPI.getReports);
+  } = useApi<IGetReportsReturn>(reportAPI.getReports);
 
   const normalizedData = useMemo(() => {
     if (!data) return null;

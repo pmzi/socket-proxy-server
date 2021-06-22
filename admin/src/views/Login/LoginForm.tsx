@@ -16,7 +16,7 @@ export default function LoginForm({ onSubmit }: IProps): JSX.Element {
       onFinish={onSubmit}
     >
       <Form.Item
-        label={strings.auth.login.USERNAME}
+        label={strings.USERNAME}
         name="username"
         rules={[required()]}
       >
@@ -24,7 +24,7 @@ export default function LoginForm({ onSubmit }: IProps): JSX.Element {
       </Form.Item>
 
       <Form.Item
-        label={strings.auth.login.PASSWORD}
+        label={strings.PASSWORD}
         name="password"
         rules={[required()]}
       >

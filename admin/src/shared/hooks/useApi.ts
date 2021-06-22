@@ -2,16 +2,16 @@ import { useCallback, useState } from 'react';
 
 type CBFnType<T, P> = (()=>Promise<T>) | ((arg: P)=>Promise<T>);
 
-interface IUseAsync<T, P, E> {
+interface IUseApi<T, P, E> {
   execute: CBFnType<T, P>;
   data: T | null;
   error: E | null;
   isLoading: boolean;
 }
 
-export default function useAsync<T, P = void, E = string>(
+export default function useApi<T, P = void, E = string>(
   fn: CBFnType<T, P>,
-): IUseAsync<T, P, E> {
+): IUseApi<T, P, E> {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<E | null>(null);

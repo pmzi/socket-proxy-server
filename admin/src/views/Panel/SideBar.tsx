@@ -1,8 +1,11 @@
 import { Layout, Menu } from 'antd';
-import { UserOutlined, LineChartOutlined, CloseOutlined } from '@ant-design/icons';
+import {
+  UserOutlined, LineChartOutlined, CloseOutlined, LogoutOutlined,
+} from '@ant-design/icons';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
-  PANEL_ADD_ADMIN, PANEL_ADD_BLACK_LIST, PANEL_ADMIN_LIST, PANEL_REPORT_ROUTE, PANEL_SHOW_BLACK,
+  PANEL_ADD_ADMIN, PANEL_ADD_BLACK_LIST, PANEL_ADMIN_LIST,
+  PANEL_LOGOUT, PANEL_REPORT_ROUTE, PANEL_SHOW_BLACK,
 } from '@shared/constants/routes';
 import strings from '@shared/constants/strings';
 
@@ -51,6 +54,14 @@ export default function SideBar(): JSX.Element {
               {strings.panel.menu.MANAGE_ADMINS}
             </NavLink></Menu.Item>
         </SubMenu>
+
+        <Menu.Item
+          key={PANEL_LOGOUT}
+          icon={<LogoutOutlined />}>
+          <NavLink to={PANEL_LOGOUT}>
+            {strings.LOGOUT}
+          </NavLink>
+        </Menu.Item>
       </Menu>
     </Sider>
   );

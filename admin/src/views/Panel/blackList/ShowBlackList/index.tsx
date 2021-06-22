@@ -3,14 +3,14 @@ import { Skeleton } from 'antd';
 
 import { blackListAPI } from '@api';
 import strings from '@shared/constants/strings';
-import useAsync from '@shared/hooks/useAsync';
+import useApi from '@shared/hooks/useApi';
 import notify from '@shared/services/notify';
 import ShowBlackListTable from './ShowBlackListTable';
 
 export default function ShowBlackList(): JSX.Element {
   const {
     isLoading, data, execute,
-  } = useAsync(blackListAPI.getBlackList);
+  } = useApi(blackListAPI.getBlackList);
 
   const normalizedData = useMemo(() => {
     if (!data) return null;

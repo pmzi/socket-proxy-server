@@ -3,12 +3,12 @@ import Card from '@shared/components/Card';
 import { useHistory } from 'react-router-dom';
 import { PANEL_SHOW_BLACK } from '@shared/constants/routes';
 import strings from '@shared/constants/strings';
-import useAsync from '@shared/hooks/useAsync';
+import useApi from '@shared/hooks/useApi';
 import notify from '@shared/services/notify';
 import AddBlackListForm, { OnSubmitType } from './AddBlackListForm';
 
 export default function AddBlackList(): JSX.Element {
-  const { isLoading, execute } = useAsync(blackListAPI.addBlackList);
+  const { isLoading, execute } = useApi(blackListAPI.addBlackList);
   const history = useHistory();
 
   const onSubmit: OnSubmitType = ({ target }) => {

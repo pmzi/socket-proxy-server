@@ -9,8 +9,6 @@ export default {
     GET_USER_DATA_ERROR_TITLE: 'خطا در دریافت اطلاعات کاربر',
     login: {
       TITLE: 'ورود ادمین',
-      USERNAME: 'نام‌کاربری',
-      PASSWORD: 'رمز عبور',
       SUBMIT: 'ورود',
 
       SUCCESS: 'با موفقیت وارد شدید!',
@@ -30,6 +28,14 @@ export default {
     },
     report: {
       TITLE: 'گزارش',
+    },
+  },
+  admin: {
+    add: {
+      TITLE: 'افزودن ادمین',
+    },
+    list: {
+      TITLE: 'لیست ادمین‌ها',
     },
   },
   blackList: {
@@ -53,7 +59,8 @@ export default {
   NOT_BLOCKED: 'بلاک نشده',
 
   USERNAME: 'نام‌کاربری',
-
+  PASSWORD: 'رمزعبور',
+  LOGOUT: 'خروج',
   REQUIRED_ERROR: 'این فیلد الزامی می‌باشد.',
   PATTERN_ERROR: 'مقدار وارد شده به فرمت صحیح نمی‌باشد.',
 };
