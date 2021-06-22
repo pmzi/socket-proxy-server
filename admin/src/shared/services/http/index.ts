@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { GenericHTTPResponseType, IRequestReturnValue } from '@shared/types';
-import auth from './auth';
+import auth from '@services/auth';
+import APIError from './APIError';
 
 const BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
@@ -31,9 +32,11 @@ export default {
 
     const result: GenericHTTPResponseType<HTTPResponse> = await res.json();
 
-    if (result.status === 'ok') return result.data;
+    if (result.status === 'ok') {
+      return result.data;
+    }
 
-    throw new Error(result.data);
+    throw new APIError({ message: result.data, response: res });
   },
   get<HTTPResponse>(
     url: string, options: RequestInit = {},

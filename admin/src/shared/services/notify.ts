@@ -19,7 +19,7 @@ interface INotify {
 function config(): void {
   notification.config({
     rtl: true,
-    placement: 'topRight',
+    placement: 'bottomRight',
   });
 }
 
