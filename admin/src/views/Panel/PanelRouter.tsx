@@ -6,7 +6,7 @@ export default function PanelRouter(): JSX.Element {
 
   return (
     <Switch>
-      <Route path={`/${path}/report`} component={PanelReport} />
+      <Route path={`${path}/report`} component={PanelReport} />
       {/* <Route path="/panel/addAdmin" /> */}
       {/* <Route path="/panel/manageAdmins" /> */}
     </Switch>

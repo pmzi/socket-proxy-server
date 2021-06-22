@@ -1,6 +1,7 @@
 export default {
   FINE: 'EveryThing is Fine!',
   ERROR: 'مشکلی رخ داد!',
+  AUTH_EXPIRE_ERROR: 'مدت‌زمان ورود شما به پایان رسیده. لطفا دوباره وارد شوید.',
   VALIDATION_ERROR: 'ورودی‌ها در فرمت صحیح نمی‌باشند!',
   reports: {
     ADD_REPORT: 'گزارش با موفقیت اضافه شد!',

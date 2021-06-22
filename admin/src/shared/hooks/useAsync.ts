@@ -1,23 +1,23 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-interface IUseAsync<T, E> {
-  execute: ()=>Promise<T>;
+interface IUseAsync<T, P, E> {
+  execute: (arg?: P)=>Promise<T>;
   data: T | null;
   error: E | null;
   isLoading: boolean;
 }
 
-export default function useAsync<T, E = string>(
-  fn: (...args: any[]) => Promise<T>, options = { init: true },
-): IUseAsync<T, E> {
+export default function useAsync<T, P = unknown, E = string>(
+  fn: (arg?: P) => Promise<T>,
+): IUseAsync<T, P, E> {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<E | null>(null);
 
-  const execute: typeof fn = (...args) => {
+  const execute = useCallback((arg?: P) => {
     setIsLoading(true);
 
-    return fn(...args).then((res) => {
+    return fn(arg).then((res) => {
       setIsLoading(false);
 
       setData(res);
@@ -31,9 +31,7 @@ export default function useAsync<T, E = string>(
       .finally(() => {
         setIsLoading(false);
       });
-  };
-
-  if (options.init) execute();
+  }, [fn]);
 
   return {
     execute,

@@ -32,6 +32,7 @@ export default {
     const result: GenericHTTPResponseType<HTTPResponse> = await res.json();
 
     if (result.status === 'ok') return result.data;
+
     throw new Error(result.data);
   },
   get<HTTPResponse>(

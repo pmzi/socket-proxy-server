@@ -28,4 +28,10 @@ export default {
       TITLE: 'گزارش',
     },
   },
+  TARGET: 'هدف',
+  LENGTH: 'حجم (بایت)',
+  IS_BLOCKED: 'بلاک شده',
+  CREATED_AT: 'زمان',
+  BLOCKED: 'بلاک شده',
+  NOT_BLOCKED: 'بلاک نشده',
 };

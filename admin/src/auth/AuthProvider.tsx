@@ -27,6 +27,7 @@ export default function AuthProvider({ children }: IProps): JSX.Element {
       setIsLoading(false);
     } catch (e) {
       setIsLoading(false);
+      setIsLoggedIn(false);
 
       notify.error({
         message: strings.auth.GET_USER_DATA_ERROR_TITLE,
