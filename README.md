@@ -32,6 +32,10 @@ After that, you can login with username `admin` and password `admin`.
 ![Architecture](https://user-images.githubusercontent.com/11475858/122997813-9cef2800-d3c1-11eb-8b91-6898c02594ab.png)
 
 
+## Video Explanation
+
+In [this](https://drive.google.com/file/d/1opajOE0hw61lDzCjPXLQdfH9GGbNV6W2/view?usp=sharing) video I explained everything about this project for my university professor.
+
 ## Used Technologies
 
 Theses technologies are used to create this project:
