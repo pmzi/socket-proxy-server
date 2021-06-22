@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./dist/index.js"
+    "start": "sequelize db:migrate && node ./dist/index.js",
+    "build": "tsc",
+    "seed": "sequelize db:seed:all"
   },
   "_moduleAliases": {
     "@services": "./dist/services",

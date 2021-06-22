@@ -1,0 +1,10 @@
+README.md
+yarn-error.log
+.env
+.gitignore
+.eslintrc.js
+.Dockerfile
+git
+node_modules
+.vscode
+.env

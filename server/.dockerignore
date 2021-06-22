@@ -1,0 +1,7 @@
+.eslintrc.js
+yarn-error.log
+git
+# .env
+node_modules
+dist
+Dockerfile
