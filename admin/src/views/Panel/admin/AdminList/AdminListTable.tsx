@@ -23,6 +23,7 @@ const columns = [
 export default function AdminListTable({ data }: IProps): JSX.Element {
   return (
     <Table
+      rowKey="id"
       columns={columns}
       dataSource={data}
     />

@@ -43,6 +43,7 @@ const columns = [
 export default function PanelReportTable({ data }: IProps): JSX.Element {
   return (
     <Table
+      rowKey="id"
       columns={columns}
       dataSource={data}
     />

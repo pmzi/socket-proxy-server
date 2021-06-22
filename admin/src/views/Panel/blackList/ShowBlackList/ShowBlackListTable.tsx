@@ -28,6 +28,7 @@ const columns = [
 export default function ShowBlackListTable({ data }: IProps): JSX.Element {
   return (
     <Table
+      rowKey="id"
       columns={columns}
       dataSource={data}
     />
