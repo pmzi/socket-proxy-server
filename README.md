@@ -6,7 +6,7 @@ Basically it is a http proxy server which will proxy your request to the desired
 
 ## Running
 
-This project uses docket to bootstrap, so it is required to install docker.
+This project uses docker to bootstrap, so it is required to install docker.
 
 After installing docker you have to rename `proxy-server.env.sample` and `server.env.sample` with your own envs and remove `.sample` from their names. After that, the only thing you need to do is to run the following command:
 ```
@@ -20,7 +20,7 @@ To use proxy server you need to go to the `localhost/proxy` and specify target a
 To use admin panel you need to seed the DB first. To do that do the following instructions:
 
 ```
-$ docket container exec -it proxy-main-server sh
+$ docker container exec -it proxy-main-server sh
 $ yarn seed
 $ exit
 ```
