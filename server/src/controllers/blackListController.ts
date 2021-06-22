@@ -8,6 +8,7 @@ interface BlackListController {
   checkRequest: ControllerMethodType;
   addTarget: ControllerMethodType;
   removeTarget: ControllerMethodType;
+  getList: ControllerMethodType;
 }
 
 const blackListController: ControllerType<BlackListController> = {
@@ -34,7 +35,7 @@ const blackListController: ControllerType<BlackListController> = {
         target,
       });
 
-      res.send(wrapResponseData(newTarget));
+      res.json(wrapResponseData(newTarget));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }
@@ -45,7 +46,16 @@ const blackListController: ControllerType<BlackListController> = {
     try {
       await BlackList.destroy({ where: { target } });
 
-      res.send(wrapResponseData(strings.blackList.REMOVE));
+      res.json(wrapResponseData(strings.blackList.REMOVE));
+    } catch (e) {
+      throw new APIError.InternalServerError(e.message);
+    }
+  },
+  async getList(req, res) {
+    try {
+      const list = await BlackList.findAll();
+
+      res.json(wrapResponseData(list));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }

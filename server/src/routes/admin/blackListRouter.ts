@@ -5,7 +5,8 @@ import blackListController from '@controllers/blackListController';
 
 const blackListRouter = express.Router();
 
-blackListRouter.post('/target', wrapError(blackListController.addTarget));
-blackListRouter.delete('/target', wrapError(blackListController.removeTarget));
+blackListRouter.post('/', wrapError(blackListController.addTarget));
+blackListRouter.delete('/', wrapError(blackListController.removeTarget));
+blackListRouter.get('/', wrapError(blackListController.removeTarget));
 
 export default blackListRouter;

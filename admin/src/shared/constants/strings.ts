@@ -23,6 +23,10 @@ export default {
       MANAGE_ADMINS: 'مدیریت ادمین‌ها',
 
       REPORT: 'گزارش',
+
+      BLACK_LIST: 'مسدود‌سازی هدف',
+      ADD_BLACK_LIST: 'افزودن هدف',
+      MANAGE_BLACK_LIST: 'مدیریت اهداف',
     },
     report: {
       TITLE: 'گزارش',
