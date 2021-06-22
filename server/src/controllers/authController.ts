@@ -12,6 +12,7 @@ interface AuthController {
   createAdmin: ControllerMethodType;
   removeAdmin: ControllerMethodType;
   getInfo: ControllerMethodType;
+  getAll: ControllerMethodType;
 }
 
 const authController: ControllerType<AuthController> = {
@@ -33,12 +34,14 @@ const authController: ControllerType<AuthController> = {
     const { username, password } = req.body;
 
     try {
-      const newAdmin = await Admin.create({
+      await Admin.create({
         username,
         password: encrypt(password),
       });
 
-      res.send(wrapResponseData(newAdmin));
+      res.json(wrapResponseData({
+        username,
+      }));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }
@@ -54,7 +57,7 @@ const authController: ControllerType<AuthController> = {
         where: { username },
       });
 
-      res.send(wrapResponseData(strings.admin.REMOVE));
+      res.json(wrapResponseData(strings.admin.REMOVE));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }
@@ -68,7 +71,19 @@ const authController: ControllerType<AuthController> = {
         attributes: ['username'],
       });
 
-      res.send(wrapResponseData(adminInfo));
+      res.json(wrapResponseData(adminInfo));
+    } catch (e) {
+      throw new APIError.InternalServerError(e.message);
+    }
+  },
+  async getAll(req, res) {
+    try {
+      const admins = await Admin.findAll({
+        order: [['id', 'DESC']],
+        attributes: ['id', 'username'],
+      });
+
+      res.json(wrapResponseData(admins));
     } catch (e) {
       throw new APIError.InternalServerError(e.message);
     }

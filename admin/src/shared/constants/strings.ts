@@ -52,6 +52,8 @@ export default {
   BLOCKED: 'بلاک شده',
   NOT_BLOCKED: 'بلاک نشده',
 
+  USERNAME: 'نام‌کاربری',
+
   REQUIRED_ERROR: 'این فیلد الزامی می‌باشد.',
   PATTERN_ERROR: 'مقدار وارد شده به فرمت صحیح نمی‌باشد.',
 };

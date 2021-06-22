@@ -10,10 +10,7 @@ interface IGetReportsReturnRow {
   createdAt: string;
 }
 
-export type IGetReportsReturn = {
-  count: number;
-  rows: IGetReportsReturnRow[];
-};
+export type IGetReportsReturn = IGetReportsReturnRow[];
 
 export default {
   getReports(): IRequestReturnValue<IGetReportsReturn> {

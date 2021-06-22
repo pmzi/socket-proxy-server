@@ -32,13 +32,16 @@ const reportController: ControllerType<ReportController> = {
       let result;
 
       if (target) {
-        result = await Report.findAndCountAll({
+        result = await Report.findAll({
           where: {
             target,
           },
+          order: [['id', 'DESC']],
         });
       } else {
-        result = await Report.findAndCountAll();
+        result = await Report.findAll({
+          order: [['id', 'DESC']],
+        });
       }
 
       res.send(wrapResponseData(result));

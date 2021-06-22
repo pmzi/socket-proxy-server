@@ -53,7 +53,9 @@ const blackListController: ControllerType<BlackListController> = {
   },
   async getList(req, res) {
     try {
-      const list = await BlackList.findAll();
+      const list = await BlackList.findAll({
+        order: [['id', 'DESC']],
+      });
 
       res.json(wrapResponseData(list));
     } catch (e) {

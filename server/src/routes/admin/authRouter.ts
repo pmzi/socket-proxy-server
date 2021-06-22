@@ -16,6 +16,7 @@ authRouter.post('/login',
   handleValidationError,
   wrapError(authController.login));
 authRouter.post('/', jwtGuard, wrapError(authController.createAdmin));
+authRouter.get('/', jwtGuard, wrapError(authController.getAll));
 authRouter.delete('/', jwtGuard, wrapError(authController.removeAdmin));
 authRouter.get('/userData', jwtGuard, wrapError(authController.getInfo));
 
