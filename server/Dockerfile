@@ -17,7 +17,6 @@ RUN npm i -g pm2
 
 WORKDIR /proxy-server
 
-
 COPY ./ecosystem.config.js ./ecosystem.config.js
 COPY ./package.json ./package.json
 COPY ./.sequelizerc ./.sequelizerc

@@ -1,0 +1,56 @@
+services:
+  proxy-server:
+    build: ./proxy-server
+    networks:
+      - app_net
+    env_file:
+      - proxy-server.env
+    links:
+      - server
+    depends_on:
+      - server
+    ports:
+      - "8080:8080"
+
+  server:
+    build: ./server
+    networks:
+      - app_net
+    env_file:
+      - server.env
+    links:
+      - database
+    depends_on:
+      - database
+    ports:
+      - "3000:3000"
+
+  admin:
+    build: 
+      context: ./admin
+      args:
+        - REACT_APP_BASE_API_URL=http://localhost:3000
+    networks:
+      - app_net
+    ports:
+      - "8000:8000"
+
+  database:
+    networks:
+      - app_net
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_DB=proxy
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - proxy-db:/var/lib/postgresql/data
+
+volumes:
+  proxy-db:
+
+networks:
+  app_net:
+    driver: bridge

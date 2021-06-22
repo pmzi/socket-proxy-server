@@ -20,7 +20,6 @@ WORKDIR /proxy-socket
 
 COPY ./ecosystem.config.js ./ecosystem.config.js
 COPY ./package.json ./package.json
-COPY ./.sequelizerc ./.sequelizerc
 COPY --from=compiler /proxy-socket/node_modules ./node_modules
 COPY --from=compiler /proxy-socket/dist ./dist
 

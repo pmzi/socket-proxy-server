@@ -18,9 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-if (!IS_PRODUCTION) {
+// if (!IS_PRODUCTION) {
   app.use(cors());
-}
+// }
 
 registerRoutes(app);
 
