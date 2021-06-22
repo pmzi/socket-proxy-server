@@ -1,4 +1,5 @@
 import strings from '@shared/constants/strings';
+import { required } from '@shared/utilities/validation';
 import {
   Form, Button, Input,
 } from 'antd';
@@ -17,7 +18,7 @@ export default function LoginForm({ onSubmit }: IProps): JSX.Element {
       <Form.Item
         label={strings.auth.login.USERNAME}
         name="username"
-        rules={[{ required: true, message: 'Please input your username!' }]}
+        rules={[required()]}
       >
         <Input />
       </Form.Item>
@@ -25,7 +26,7 @@ export default function LoginForm({ onSubmit }: IProps): JSX.Element {
       <Form.Item
         label={strings.auth.login.PASSWORD}
         name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
+        rules={[required()]}
       >
         <Input.Password />
       </Form.Item>
