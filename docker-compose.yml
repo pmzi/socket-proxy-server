@@ -11,6 +11,7 @@ services:
       - server
 
   server:
+    container_name: proxy-main-server
     build: ./server
     networks:
       - app_net
