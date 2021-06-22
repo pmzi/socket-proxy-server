@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import PublicRoute from '@shared/components/router/PublicRoute';
 import PrivateRoute from '@shared/components/router/PrivateRoute';
 
@@ -12,7 +12,9 @@ export default function Router(): JSX.Element {
 
       <PrivateRoute path="/panel" component={Panel} />
 
-      <Route component={Login} />
+      <Route>
+        <Redirect to="/login" />
+      </Route>
     </Switch>
   );
 }

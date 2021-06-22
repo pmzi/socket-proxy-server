@@ -1,4 +1,6 @@
-import { Switch, Route, useRouteMatch } from 'react-router-dom';
+import {
+  Switch, Route, useRouteMatch, Redirect,
+} from 'react-router-dom';
 import PanelReport from './PanelReport';
 
 export default function PanelRouter(): JSX.Element {
@@ -9,6 +11,9 @@ export default function PanelRouter(): JSX.Element {
       <Route path={`${path}/report`} component={PanelReport} />
       {/* <Route path="/panel/addAdmin" /> */}
       {/* <Route path="/panel/manageAdmins" /> */}
+      <Route path={`${path}`}>
+        <Redirect to={`${path}/report`} />
+      </Route>
     </Switch>
   );
 }
